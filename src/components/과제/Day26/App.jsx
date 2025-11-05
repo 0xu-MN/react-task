@@ -13,7 +13,7 @@ function App() {
     "Support",
   ];
 
-  // 👇 방법1: Array.from 대신 간단한 배열로 변경
+ 
   const boxes = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
