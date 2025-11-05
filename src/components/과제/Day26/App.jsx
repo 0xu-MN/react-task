@@ -29,7 +29,7 @@ function App() {
   
   useEffect(() => {
     if (hoveredBox !== null) {
-      console.log(`🖱️ 마우스가 ${hoveredBox}번 박스 위에 있습니다.`);
+      console.log(`마우스가 ${hoveredBox}번 박스 위에 있습니다.`);
     } else {
       console.log("마우스가 어떤 박스 위에도 없습니다.");
     }
