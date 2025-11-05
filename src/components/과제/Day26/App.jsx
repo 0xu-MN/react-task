@@ -1,6 +1,8 @@
+import { useEffect, useState } from "react";
 import { MessageCircle, Bell, User, Twitter, Facebook, Instagram } from "lucide-react";
 
 function App() {
+  
   const textMenu = ["Explore", "Find Talent", "Get Hired", "Blog"];
   const Menu = [
     "For designers",
@@ -13,8 +15,25 @@ function App() {
     "Support",
   ];
 
- 
+  
   const boxes = [1, 2, 3, 4, 5, 6, 7, 8];
+
+  
+  const [hoveredBox, setHoveredBox] = useState(null);
+
+  
+  useEffect(() => {
+    console.log("🎬 App 컴포넌트가 화면에 처음 렌더링되었습니다!");
+  }, []);
+
+  
+  useEffect(() => {
+    if (hoveredBox !== null) {
+      console.log(`🖱️ 마우스가 ${hoveredBox}번 박스 위에 있습니다.`);
+    } else {
+      console.log("마우스가 어떤 박스 위에도 없습니다.");
+    }
+  }, [hoveredBox]);
 
   return (
     <div className="w-full min-h-screen bg-white flex flex-col justify-between">
@@ -78,13 +97,13 @@ function App() {
             <div className="text-sm text-gray-500">
               Popular:
               <button className="ml-2 px-3 py-1 bg-gray-100 rounded-full text-gray-700 hover:bg-gray-200 transition">
-                UI Design
+                dashboard
               </button>
               <button className="ml-2 px-3 py-1 bg-gray-100 rounded-full text-gray-700 hover:bg-gray-200 transition">
-                Illustration
+                landing page
               </button>
               <button className="ml-2 px-3 py-1 bg-gray-100 rounded-full text-gray-700 hover:bg-gray-200 transition">
-                Branding
+                logo
               </button>
             </div>
           </div>
@@ -105,11 +124,13 @@ function App() {
             {boxes.map((num) => (
               <div
                 key={num}
-                className="w-[250px] h-[200px] bg-white rounded-2xl flex flex-col justify-between p-4 hover:shadow-md transition"
+                onMouseEnter={() => setHoveredBox(num)}
+                onMouseLeave={() => setHoveredBox(null)}
+                className={`w-[250px] h-[200px] bg-white rounded-2xl flex flex-col justify-between p-4 shadow-sm transition-transform duration-300 ease-out cursor-pointer
+                  ${hoveredBox === num ? "scale-110 shadow-lg bg-pink-50" : "scale-100"}
+                `}
               >
-                {/* 이미지 영역 */}
                 <div className="flex-1 bg-gray-300 rounded-xl"></div>
-                {/* 이름표 라벨 */}
                 <div className="mt-4 flex items-center justify-center">
                   <div className="w-24 h-6 bg-gray-300 rounded-full"></div>
                 </div>
