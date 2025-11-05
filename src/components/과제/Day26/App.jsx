@@ -23,7 +23,7 @@ function App() {
 
   
   useEffect(() => {
-    console.log("렌더링되었습니다!");
+    console.log("렌더링되었습니다");
   }, []);
 
   
